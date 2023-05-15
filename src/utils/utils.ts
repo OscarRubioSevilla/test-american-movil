@@ -39,3 +39,16 @@ export function setDateToString(date: Moment): string {
   return moment(roundDateStr).format('YYYYMMDDHHmmss')
 }
 
+
+interface EventTimeProps {
+  date_begin: string,
+  date_end: string,
+  duration: string
+} 
+export function formatEventTime ({ date_begin, date_end, duration = ''}: EventTimeProps) {
+ 
+  const dateStart = moment(date_begin).format('HH.mm');
+  const dateEnd= moment(date_end).format('HH.mm');
+  const [hours, minutes] = duration?.split(':')
+  return `${dateStart}hs a ${dateEnd}hs ${parseInt(hours)}h ${ parseInt(minutes)}min`
+}
