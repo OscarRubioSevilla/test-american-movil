@@ -1,26 +1,40 @@
 import { getChannels } from './../services/channels';
 import { create } from 'zustand';
 
-
-interface BookStore {
-    data: Array<any>,
+import { Channel, IResponse, Event } from '../interfaces/IChannel';
+import { ChannelProps } from './../services/channels';
+export interface ChannelStore {
+    current_event: Event,
+    data: Array<Channel>,
+    date_from: string,
     loading: boolean,
     hasErrors: boolean,
-    getChannels: () => void
+    getChannels: (props: ChannelProps) => void,
+    setCurrentEvent: (event: Event) => void,
 }
 
-
-export const useBookStore = create<BookStore>((set) => ({
+export const useChannelStore = create<ChannelStore>((set) => ({
     data: [],
+    date_from: '',
     loading: false,
     hasErrors: false,
-    getChannels: async () => {
+    current_event: {} as Event,
+    getChannels: async (props) => {
       set(() => ({ loading: true }));
       try {
-        const response = await getChannels();
-        set((state: BookStore) => ({ data: (state.data = response.data), loading: false }));
+        const response: IResponse = await getChannels(props);
+        set((state: ChannelStore) => ({ 
+          data: state.data = response.response.channels, 
+          date_from: state.date_from = response.entry.date_from, 
+          loading: false 
+        }));
       } catch (err) {
         set(() => ({ hasErrors: true, loading: false }));
       }
     },
+    setCurrentEvent: (event: Event) => {
+      set((state) => ({
+        current_event: state.current_event = event
+      }) )
+    }
 })); 
