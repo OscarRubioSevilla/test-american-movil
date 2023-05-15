@@ -1,7 +1,9 @@
 import './App.css';
-
+import { Programmation } from './components/EPG/Programmation';
 function App() {
-  return <h1></h1>
+  return <main className='w-full'>
+    <Programmation />
+  </main>
 }
 
 export default App
