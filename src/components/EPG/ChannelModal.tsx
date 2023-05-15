@@ -45,15 +45,17 @@ function ChannelModal({ handleClose }: ChannelModalProps) {
         return <p>Ha ocurrido un error al cargar los canales.</p>;
 
     return <div className="modal">
-        <div className="flex justify-between">
-            <button onClick={handleClose}>OK</button>
+        <div className="modal-header">
+            <div className="flex justify-between">
+                <button onClick={handleClose}>OK</button>
+            </div>
+            <RenderChannel />
         </div>
         <div className="content">
             <section>
                 <>
                     {channelData.length > 0 ? (
                         <>
-                            <RenderChannel />
                                 <div>
                                     <div className="list-none w-[104%] lg:w-fit inline-flex px-2 bg-black">
 
@@ -85,9 +87,9 @@ function ChannelModal({ handleClose }: ChannelModalProps) {
                                         <div className="w-1/3 lg:w-[11vw] h-fit bg-black">
 
                                             {channelData.map((channel) => (
-                                                <div className="px-2 h-[7.2rem] bg-[#1a1a1a] rounded-xl flex border-black border-8 justify-between items-center">
-                                                    <p className="text-white text-3xl">{channel.number}</p>
-                                                    <figure className="w-36">
+                                                <div className="p-3 lg:px-2 h-[7.2rem] bg-[#1a1a1a] flex-col sm:flex-row rounded-xl flex border-black border-8 justify-between items-center">
+                                                    <p className="text-white text-xl sm:text-3xl">{channel.number}</p>
+                                                    <figure className=" w-24 sm:w-36">
                                                         <img src={channel.image} alt="" />
                                                     </figure>
                                                 </div>
