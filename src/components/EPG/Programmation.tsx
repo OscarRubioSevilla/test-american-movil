@@ -6,7 +6,7 @@ export function Programmation() {
 
   return (
     <div className="relative h-screen w-screen flex justify-center items-center">
-      <button onClick={() => setOpenModal(true)}>MOSTRAR EPG</button>
+      <button className="bg-dark-red hover:bg-opacity-80 text-white font-semibold px-4 py-2 rounded-md" onClick={() => setOpenModal(true)}>MOSTRAR EPG</button>
       {
         openModal ? <ChannelModal handleClose={() => setOpenModal(false)} /> : ''
       }

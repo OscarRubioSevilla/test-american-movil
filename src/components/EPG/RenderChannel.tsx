@@ -13,8 +13,8 @@ export function RenderChannel() {
         <div className="h-[32vh] w-full flex flex-col justify-between overflow-y-hidden">
             <div className="lg:py-6 lg:px-10 px-3">
                 <h1 role="title" className="text-white text-3xl lg:text-5xl font-bold text whitespace-nowrap overflow-ellipsis">{current_event.name}</h1>
-                <p className="text-white mt-5 lg:mt-10 text-lg"> { eventTime } </p>
-                <p className="text-white">{current_event.description}</p>
+                <p role="event_time" className="text-white mt-5 lg:mt-10 text-lg">{ eventTime }</p>
+                <p role="description" className="text-white">{current_event.description}</p>
             </div>
         </div>
     )
