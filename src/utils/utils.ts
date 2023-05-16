@@ -20,15 +20,17 @@ export function getDateHeader(start: string) : string[] {
 
 export function getDateFromString(strDate: string) : string {
  
-  if (!/^\d{14}$/.test(strDate) || !strDate.trim()) {
-    return strDate;
+  const date = strDate.trim();
+  
+  if (!/^\d{14}$/.test(date)) {
+    return '';
   }
-  const year = strDate.substring(0, 4);
-  const month = strDate.substring(4, 6);
-  const day = strDate.substring(6, 8);
-  const hours = strDate.substring(8, 10);
-  const minutes = strDate.substring(10, 12);
-  const seconds = strDate.substring(12, 14);
+  const year = date.substring(0, 4);
+  const month = date.substring(4, 6);
+  const day = date.substring(6, 8);
+  const hours = date.substring(8, 10);
+  const minutes = date.substring(10, 12);
+  const seconds = date.substring(12, 14);
 
   return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`
 
